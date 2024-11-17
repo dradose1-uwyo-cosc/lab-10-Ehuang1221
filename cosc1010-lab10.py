@@ -1,13 +1,13 @@
-# Your Name Here
+# Edmon Huang
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# Submission Date: 11/19/24
+# Lab 10
+# Lab Section: 11
 # Sources, people worked with, help given to: 
 # your
 # comments
 # here
-
+# AI and Stack overflow
 #import modules you will need 
 
 from hashlib import sha256 
@@ -17,6 +17,37 @@ def get_hash(to_hash):
     """You can use """
     return sha256(to_hash.encode('utf-8')).hexdigest().upper()
 
+def main():
+    try:
+        with open('hash', 'r') as hash_file:
+            target_hash = hash_file.read().strip()
+    except FileNotFoundError:
+        print("Error: The file was not found")
+        return
+    except Exception as e:
+        print(f"An error occured while reading the 'hash' file: {e}")
+        return
+
+    try:
+        with open('rockyou.txt', 'r', encoding='utf-8', errors='ignore') as password_file:
+            passwords = password_file.readlines()
+    except FileNotFoundError:
+        print("Error: The file 'rockyou.txt' was not found.")
+        return
+    except Exception as e:
+        print(f"An error occurred while reading 'rockyou.txt': {e}")
+        return
+    else:
+        for password in passwords:
+            password = password.strip()
+            hashed_password = get_hash(password)
+            if hashed_password == target_hash:
+                print(f"Password found: {password}")
+                break
+        else:
+            print("Password not found in the list")
+if __name__ == "__main__":
+    main()
 
 
 # Files and Exceptions
