@@ -1,9 +1,9 @@
-# [Name]
-## [Assignment #]
-## [Submission date: MM/DD/YY]
+# [Edmon Huang]
+## [Assignment Lab10]
+## [Submission date: 11/19/24]
 ## Worked with/sources 
-* example
-* example
+* AI
+* Stack Overflow
 * example
 * example
 ## Project Quirks/ Things that don't work
