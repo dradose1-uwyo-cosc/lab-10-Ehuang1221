@@ -19,35 +19,38 @@ def get_hash(to_hash):
 
 def main():
     try:
-        with open('hash', 'r') as hash_file:
-            target_hash = hash_file.read().strip()
-    except FileNotFoundError:
+        with open('hash', 'r') as hash_file: # Opens hash in read mode
+            target_hash = hash_file.read().strip() # reads code and removes white space
+    except FileNotFoundError: # Catches error
         print("Error: The file was not found")
-        return
+        return 
     except Exception as e:
-        print(f"An error occured while reading the 'hash' file: {e}")
+        print(f"An error ocurred while reading the file: {e}")
         return
-
+    
     try:
-        with open('rockyou.txt', 'r', encoding='utf-8', errors='ignore') as password_file:
+        with open('rockyou.txt', 'r', encoding='utf-8', errors='ignore') as password_file: # Open in read with UTF-8 encoding
             passwords = password_file.readlines()
     except FileNotFoundError:
-        print("Error: The file 'rockyou.txt' was not found.")
+        print("Error: The file was not found.")
         return
     except Exception as e:
-        print(f"An error occurred while reading 'rockyou.txt': {e}")
+        print(f"An error occured while reading text: {e}")
         return
     else:
         for password in passwords:
             password = password.strip()
-            hashed_password = get_hash(password)
-            if hashed_password == target_hash:
-                print(f"Password found: {password}")
+            hash_password = get_hash(password)
+            if hash_password == target_hash:
+                print(f"Password: {password}")
                 break
         else:
-            print("Password not found in the list")
+            print("Password not found")
 if __name__ == "__main__":
     main()
+
+
+
 
 
 # Files and Exceptions
